@@ -86,7 +86,7 @@ public class Transaction {
         if (parent_id >= 0)
             this.parent_id = parent_id;
         else
-            throw new IllegalArgumentException("The parent id has to be greater than 0.");
+            throw new IllegalArgumentException("The parent id has to be greater than or equal to 0.");
     }
 
     /**
