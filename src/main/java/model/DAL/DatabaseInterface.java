@@ -31,34 +31,34 @@ import java.util.ArrayList;
  * @author Valentin Berclaz
  */
 public interface DatabaseInterface {
-    /**
-     * Get a specific transaction via its id
-     *
-     * @param id The id of the transaction
-     * @return The transaction with the specified id
-     */
-    Transaction getTransaction(long id);
+	/**
+	 * Get a specific transaction via its id
+	 *
+	 * @param id The id of the transaction
+	 * @return The transaction with the specified id
+	 */
+	Transaction getTransaction(long id);
 
-    /**
-     * Get transactions ids that correspond to a specified type
-     *
-     * @param type The type of the transactions
-     * @return The transactions ids with the specified type
-     */
-    ArrayList<Long> getTransactionsIdsByType(String type);
+	/**
+	 * Get transactions ids that correspond to a specified type
+	 *
+	 * @param type The type of the transactions
+	 * @return The transactions ids with the specified type
+	 */
+	ArrayList<Long> getTransactionsIdsByType(String type);
 
-    /**
-     * Get the sum of the transaction and all its children
-     *
-     * @param id The id of the parent transaction
-     * @return The requested sum
-     */
-    Double getSum(long id);
+	/**
+	 * Get the sum of the transaction and all its children
+	 *
+	 * @param id The id of the parent transaction
+	 * @return The requested sum
+	 */
+	Double getSum(long id);
 
-    /**
-     * Add a transaction to the database
-     *
-     * @param transaction The transaction to add
-     */
-    void addTransaction(Transaction transaction);
+	/**
+	 * Add a transaction to the database
+	 *
+	 * @param transaction The transaction to add
+	 */
+	void addTransaction(Transaction transaction);
 }
