@@ -45,10 +45,10 @@ public class MemoryDatabase implements DatabaseInterface {
 
 		// Some fake test data
 		// TODO remove test data
-		db.put(1L, new Transaction(1L, 0L, 20.0, "grocery"));
-		db.put(2L, new Transaction(2L, 0L, 30.0, "grocery"));
-		db.put(3L, new Transaction(3L, 0L, 5.0, "car"));
-		db.put(4L, new Transaction(4L, 1L, 5.0, "grocery"));
+		db.put(1L, new Transaction(1L, null, 20.0, "grocery"));
+		db.put(2L, new Transaction(2L, null, 30.0, "grocery"));
+		db.put(3L, new Transaction(3L, null, 5.0, "car"));
+		db.put(4L, new Transaction(4L, null, 5.0, "grocery"));
 		ArrayList<Long> tmpGrocery = new ArrayList<Long>();
 		tmpGrocery.add(1L);
 		tmpGrocery.add(2L);
