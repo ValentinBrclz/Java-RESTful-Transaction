@@ -23,6 +23,8 @@ package model.DAL;
 
 import model.DAO.Transaction;
 
+import java.util.ArrayList;
+
 /**
  * Interface that defines the function to implement by any database
  *
@@ -43,7 +45,7 @@ public interface DatabaseInterface {
      * @param type The type of the transactions
      * @return The transactions ids with the specified type
      */
-    long[] getTransactionsIdsByType(String type);
+    ArrayList<Long> getTransactionsIdsByType(String type);
 
     /**
      * Get the sum of the transaction and all its children
@@ -58,5 +60,5 @@ public interface DatabaseInterface {
      *
      * @param transaction The transaction to add
      */
-    void addTranscation(Transaction transaction);
+    void addTransaction(Transaction transaction);
 }

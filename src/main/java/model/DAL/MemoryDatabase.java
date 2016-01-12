@@ -23,12 +23,25 @@ package model.DAL;
 
 import model.DAO.Transaction;
 
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Local database in memory
  *
  * @author Valentin Berclaz
  */
-public class Database implements DatabaseInterface {
+public class MemoryDatabase implements DatabaseInterface {
+    private ConcurrentHashMap<Long, Transaction> db;
+    private ConcurrentHashMap<String, ArrayList<Long>> typeIndex;
+
+    /**
+     * Constructor
+     */
+    public MemoryDatabase() {
+        db = new ConcurrentHashMap<Long, Transaction>();
+        typeIndex = new ConcurrentHashMap<String, ArrayList<Long>>();
+    }
 
     /**
      * Get a specific transaction via its id
@@ -38,7 +51,8 @@ public class Database implements DatabaseInterface {
      */
     @Override
     public Transaction getTransaction(long id) {
-        return null;
+        // TODO test nullpointer
+        return db.get(id);
     }
 
     /**
@@ -48,8 +62,9 @@ public class Database implements DatabaseInterface {
      * @return The transactions ids with the specified type
      */
     @Override
-    public long[] getTransactionsIdsByType(String type) {
-        return new long[0];
+    public ArrayList<Long> getTransactionsIdsByType(String type) {
+        // TODO test nullpointer
+        return typeIndex.get(type);
     }
 
     /**
@@ -60,6 +75,7 @@ public class Database implements DatabaseInterface {
      */
     @Override
     public Double getSum(long id) {
+        // TODO implement function nullpointer
         return null;
     }
 
@@ -69,7 +85,20 @@ public class Database implements DatabaseInterface {
      * @param transaction The transaction to add
      */
     @Override
-    public void addTranscation(Transaction transaction) {
+    public void addTransaction(Transaction transaction) {
+        // Add the transaction in the main database
+        db.put(transaction.getId(), transaction);
 
+        // Add the transaction id in the TypeIndex
+        ArrayList<Long> typeList;
+        if (typeIndex.get(transaction.getType()) == null) {
+            typeList = new ArrayList<Long>();
+            typeList.add(transaction.getId());
+            typeIndex.put(transaction.getType(), typeList);
+        } else {
+            typeList = typeIndex.get(transaction.getType());
+            typeList.add(transaction.getId());
+            typeIndex.replace(transaction.getType(), typeList);
+        }
     }
 }
