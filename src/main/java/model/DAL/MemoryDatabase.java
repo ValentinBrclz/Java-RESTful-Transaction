@@ -41,6 +41,22 @@ public class MemoryDatabase implements DatabaseInterface {
     public MemoryDatabase() {
         db = new ConcurrentHashMap<Long, Transaction>();
         typeIndex = new ConcurrentHashMap<String, ArrayList<Long>>();
+
+
+        // Some fake test data
+        // TODO remove test data
+        db.put(1L, new Transaction(1L, 0L, 20.0, "grocery"));
+        db.put(2L, new Transaction(2L, 0L, 30.0, "grocery"));
+        db.put(3L, new Transaction(3L, 0L, 5.0, "car"));
+        db.put(4L, new Transaction(4L, 1L, 5.0, "grocery"));
+        ArrayList<Long> tmpGrocery = new ArrayList<Long>();
+        tmpGrocery.add(1L);
+        tmpGrocery.add(2L);
+        tmpGrocery.add(4L);
+        typeIndex.put("grocery", tmpGrocery);
+        ArrayList<Long> tmpCar = new ArrayList<Long>();
+        tmpCar.add(3L);
+        typeIndex.put("car", tmpCar);
     }
 
     /**
@@ -75,7 +91,7 @@ public class MemoryDatabase implements DatabaseInterface {
      */
     @Override
     public Double getSum(long id) {
-        // TODO implement function nullpointer
+        // TODO implement function
         return null;
     }
 
