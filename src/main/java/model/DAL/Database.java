@@ -42,14 +42,14 @@ public class Database implements DatabaseInterface {
     }
 
     /**
-     * Get transactions that correspond to a specified type
+     * Get transactions ids that correspond to a specified type
      *
      * @param type The type of the transactions
-     * @return The transactions with the specified type
+     * @return The transactions ids with the specified type
      */
     @Override
-    public Transaction[] getTransactionsByType(String type) {
-        return new Transaction[0];
+    public long[] getTransactionsIdsByType(String type) {
+        return new long[0];
     }
 
     /**

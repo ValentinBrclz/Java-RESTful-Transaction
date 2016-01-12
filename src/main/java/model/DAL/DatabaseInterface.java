@@ -38,12 +38,12 @@ public interface DatabaseInterface {
     Transaction getTransaction(long id);
 
     /**
-     * Get transactions that correspond to a specified type
+     * Get transactions ids that correspond to a specified type
      *
      * @param type The type of the transactions
-     * @return The transactions with the specified type
+     * @return The transactions ids with the specified type
      */
-    Transaction[] getTransactionsByType(String type);
+    long[] getTransactionsIdsByType(String type);
 
     /**
      * Get transactions that have a specific parent
