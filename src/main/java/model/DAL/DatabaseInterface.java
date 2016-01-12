@@ -59,12 +59,4 @@ public interface DatabaseInterface {
      * @param transaction The transaction to add
      */
     void addTranscation(Transaction transaction);
-
-    /**
-     * Update the transaction with the specified id
-     *
-     * @param id             The id of the transaction to update
-     * @param newTransaction The new and modified transaction
-     */
-    void updateTransaction(long id, Transaction newTransaction);
 }

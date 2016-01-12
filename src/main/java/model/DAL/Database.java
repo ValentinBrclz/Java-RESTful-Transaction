@@ -72,15 +72,4 @@ public class Database implements DatabaseInterface {
     public void addTranscation(Transaction transaction) {
 
     }
-
-    /**
-     * Update the transaction with the specified id
-     *
-     * @param id             The id of the transaction to update
-     * @param newTransaction The new and modified transaction
-     */
-    @Override
-    public void updateTransaction(long id, Transaction newTransaction) {
-
-    }
 }
