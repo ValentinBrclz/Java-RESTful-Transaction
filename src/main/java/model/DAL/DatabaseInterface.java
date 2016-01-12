@@ -29,13 +29,38 @@ import model.DAO.Transaction;
  * @author Valentin Berclaz
  */
 public interface DatabaseInterface {
+    /**
+     * Get a specific transaction via its id
+     *
+     * @param id The id of the transaction
+     * @return The transaction with the specified id
+     */
     Transaction getTransaction(long id);
 
+    /**
+     * Get transactions that correspond to a specified type
+     * @param type The type of the transactions
+     * @return The transactions with the specified type
+     */
     Transaction[] getTransactionsByType(String type);
 
+    /**
+     * Get transactions that have a specific parent
+     * @param parent_id The id of the parent of the transactions
+     * @return The transactions with the specified parent
+     */
     Transaction[] getTransactionsByParent(long parent_id);
 
+    /**
+     * Add a transaction to the database
+     * @param transaction The transaction to add
+     */
     void addTranscation(Transaction transaction);
 
+    /**
+     * Update the transaction with the specified id
+     * @param id The id of the transaction to update
+     * @param newTransaction The new and modified transaction
+     */
     void updateTransaction(long id, Transaction newTransaction);
 }
