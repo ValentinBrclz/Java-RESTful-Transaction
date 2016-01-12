@@ -67,7 +67,6 @@ public class MemoryDatabase implements DatabaseInterface {
      */
     @Override
     public Transaction getTransaction(long id) {
-        // TODO test nullpointer
         return db.get(id);
     }
 
@@ -79,7 +78,6 @@ public class MemoryDatabase implements DatabaseInterface {
      */
     @Override
     public ArrayList<Long> getTransactionsIdsByType(String type) {
-        // TODO test nullpointer
         return typeIndex.get(type);
     }
 
