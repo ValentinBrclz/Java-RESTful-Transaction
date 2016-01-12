@@ -83,7 +83,7 @@ public class Transaction {
      */
     public void setParent_id(long parent_id) throws IllegalArgumentException {
         // TODO check if parent exist
-        if (parent_id > 0)
+        if (parent_id >= 0)
             this.parent_id = parent_id;
         else
             throw new IllegalArgumentException("The parent id has to be greater than 0.");
