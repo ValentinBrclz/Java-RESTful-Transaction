@@ -53,14 +53,14 @@ public class Database implements DatabaseInterface {
     }
 
     /**
-     * Get transactions that have a specific parent
+     * Get the sum of the transaction and all its children
      *
-     * @param parent_id The id of the parent of the transactions
-     * @return The transactions with the specified parent
+     * @param id The id of the parent transaction
+     * @return The requested sum
      */
     @Override
-    public Transaction[] getTransactionsByParent(long parent_id) {
-        return new Transaction[0];
+    public Double getSum(long id) {
+        return null;
     }
 
     /**

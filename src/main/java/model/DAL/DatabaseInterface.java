@@ -46,12 +46,12 @@ public interface DatabaseInterface {
     long[] getTransactionsIdsByType(String type);
 
     /**
-     * Get transactions that have a specific parent
+     * Get the sum of the transaction and all its children
      *
-     * @param parent_id The id of the parent of the transactions
-     * @return The transactions with the specified parent
+     * @param id The id of the parent transaction
+     * @return The requested sum
      */
-    Transaction[] getTransactionsByParent(long parent_id);
+    Double getSum(long id);
 
     /**
      * Add a transaction to the database
