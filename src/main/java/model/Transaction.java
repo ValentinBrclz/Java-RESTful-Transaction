@@ -38,8 +38,9 @@ public class Transaction {
      * @param parent_id The id of the parent of the transaction
      * @param amount The amount of the transaction
      * @param type The type of the transaction
+     * @throws IllegalArgumentException
      */
-    public Transaction(long id, long parent_id, double amount, String type) {
+    public Transaction(long id, long parent_id, double amount, String type) throws IllegalArgumentException {
         setId(id);
         setParent_id(parent_id);
         setAmount(amount);
@@ -58,9 +59,13 @@ public class Transaction {
     /**
      * Set the id of the transaction
      * @param id The id of the transaction
+     * @throws IllegalArgumentException
      */
-    private void setId(long id) {
-        this.id = id;
+    private void setId(long id) throws IllegalArgumentException {
+        if (id > 0)
+            this.id = id;
+        else
+            throw new IllegalArgumentException("The id has to be greater than 0.");
     }
 
     /**
@@ -74,9 +79,14 @@ public class Transaction {
     /**
      * Set the parent id of the transaction
      * @param parent_id The id of the parent
+     * @throws IllegalArgumentException
      */
-    public void setParent_id(long parent_id) {
-        this.parent_id = parent_id;
+    public void setParent_id(long parent_id) throws IllegalArgumentException {
+        // TODO check if parent exist
+        if (parent_id > 0)
+            this.parent_id = parent_id;
+        else
+            throw new IllegalArgumentException("The parent id has to be greater than 0.");
     }
 
     /**
@@ -89,7 +99,7 @@ public class Transaction {
 
     /**
      * Set the amount of the transaction
-     * @param amount The amount of the transaction
+     * @param amount The amount of the transaction (negative or positive)
      */
     public void setAmount(double amount) {
         this.amount = amount;
