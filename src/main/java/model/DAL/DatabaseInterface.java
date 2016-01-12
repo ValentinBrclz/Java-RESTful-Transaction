@@ -21,11 +21,21 @@
 
 package model.DAL;
 
+import model.DAO.Transaction;
+
 /**
  * Interface that defines the function to implement by any database
  *
  * @author Valentin Berclaz
  */
 public interface DatabaseInterface {
+    Transaction getTransaction(long id);
 
+    Transaction[] getTransactionsByType(String type);
+
+    Transaction[] getTransactionsByParent(long parent_id);
+
+    void addTranscation(Transaction transaction);
+
+    void updateTransaction(long id, Transaction newTransaction);
 }
