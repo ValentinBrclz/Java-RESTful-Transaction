@@ -32,6 +32,20 @@ public class Transaction {
     private double amount;
     private String type;
 
+    /**
+     * Constructor of the transaction
+     * @param id The id of the transaction
+     * @param parent_id The id of the parent of the transaction
+     * @param amount The amount of the transaction
+     * @param type The type of the transaction
+     */
+    public Transaction(long id, long parent_id, double amount, String type) {
+        setId(id);
+        setParent_id(parent_id);
+        setAmount(amount);
+        setType(type);
+    }
+
     // Getter and setters
     /**
      * Get the id of the transaction
