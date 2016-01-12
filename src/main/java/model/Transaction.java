@@ -23,10 +23,77 @@ package model;
 
 /**
  * "Transaction" object class
+ * @author Valentin Berclaz
  */
 public class Transaction {
+    // Variables
     private long id;
     private long parent_id;
     private double amount;
     private String type;
+
+    // Getter and setters
+    /**
+     * Get the id of the transaction
+     * @return The id of the transaction
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Set the id of the transaction
+     * @param id The id of the transaction
+     */
+    private void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * Get the parent id of the transaction
+     * @return The id of the parent
+     */
+    public long getParent_id() {
+        return parent_id;
+    }
+
+    /**
+     * Set the parent id of the transaction
+     * @param parent_id The id of the parent
+     */
+    public void setParent_id(long parent_id) {
+        this.parent_id = parent_id;
+    }
+
+    /**
+     * Get the amount of the transaction
+     * @return The amount of the transaction
+     */
+    public double getAmount() {
+        return amount;
+    }
+
+    /**
+     * Set the amount of the transaction
+     * @param amount The amount of the transaction
+     */
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    /**
+     * Get the type of the transaction
+     * @return The type of the transaction
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * Set the type of the transaction
+     * @param type The type of the transaction
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
 }
