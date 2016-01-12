@@ -39,6 +39,7 @@ public interface DatabaseInterface {
 
     /**
      * Get transactions that correspond to a specified type
+     *
      * @param type The type of the transactions
      * @return The transactions with the specified type
      */
@@ -46,6 +47,7 @@ public interface DatabaseInterface {
 
     /**
      * Get transactions that have a specific parent
+     *
      * @param parent_id The id of the parent of the transactions
      * @return The transactions with the specified parent
      */
@@ -53,13 +55,15 @@ public interface DatabaseInterface {
 
     /**
      * Add a transaction to the database
+     *
      * @param transaction The transaction to add
      */
     void addTranscation(Transaction transaction);
 
     /**
      * Update the transaction with the specified id
-     * @param id The id of the transaction to update
+     *
+     * @param id             The id of the transaction to update
      * @param newTransaction The new and modified transaction
      */
     void updateTransaction(long id, Transaction newTransaction);
