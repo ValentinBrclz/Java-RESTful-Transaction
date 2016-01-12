@@ -28,7 +28,7 @@ package model.DAO;
 public class Transaction {
     // Variables
     private long id;
-    private long parent_id;
+    private Long parent_id;
     private double amount;
     private String type;
 
@@ -40,7 +40,7 @@ public class Transaction {
      * @param type The type of the transaction
      * @throws IllegalArgumentException
      */
-    public Transaction(long id, long parent_id, double amount, String type) throws IllegalArgumentException {
+    public Transaction(long id, Long parent_id, double amount, String type) throws IllegalArgumentException {
         setId(id);
         setParent_id(parent_id);
         setAmount(amount);
@@ -81,9 +81,9 @@ public class Transaction {
      * @param parent_id The id of the parent
      * @throws IllegalArgumentException
      */
-    public void setParent_id(long parent_id) throws IllegalArgumentException {
+    public void setParent_id(Long parent_id) throws IllegalArgumentException {
         // TODO check if parent exist
-        if (parent_id >= 0)
+        if (parent_id == null || parent_id > 0)
             this.parent_id = parent_id;
         else
             throw new IllegalArgumentException("The parent id has to be greater than or equal to 0.");
