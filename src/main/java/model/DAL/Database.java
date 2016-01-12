@@ -21,6 +21,8 @@
 
 package model.DAL;
 
+import model.DAO.Transaction;
+
 /**
  * Local database in memory
  *
@@ -28,4 +30,57 @@ package model.DAL;
  */
 public class Database implements DatabaseInterface {
 
+    /**
+     * Get a specific transaction via its id
+     *
+     * @param id The id of the transaction
+     * @return The transaction with the specified id
+     */
+    @Override
+    public Transaction getTransaction(long id) {
+        return null;
+    }
+
+    /**
+     * Get transactions that correspond to a specified type
+     *
+     * @param type The type of the transactions
+     * @return The transactions with the specified type
+     */
+    @Override
+    public Transaction[] getTransactionsByType(String type) {
+        return new Transaction[0];
+    }
+
+    /**
+     * Get transactions that have a specific parent
+     *
+     * @param parent_id The id of the parent of the transactions
+     * @return The transactions with the specified parent
+     */
+    @Override
+    public Transaction[] getTransactionsByParent(long parent_id) {
+        return new Transaction[0];
+    }
+
+    /**
+     * Add a transaction to the database
+     *
+     * @param transaction The transaction to add
+     */
+    @Override
+    public void addTranscation(Transaction transaction) {
+
+    }
+
+    /**
+     * Update the transaction with the specified id
+     *
+     * @param id             The id of the transaction to update
+     * @param newTransaction The new and modified transaction
+     */
+    @Override
+    public void updateTransaction(long id, Transaction newTransaction) {
+
+    }
 }
