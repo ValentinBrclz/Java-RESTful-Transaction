@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package model;
+package model.DAL;
 
 /**
  * Interface that defines the function to implement by any database

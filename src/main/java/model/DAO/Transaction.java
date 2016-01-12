@@ -19,7 +19,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package model;
+package model.DAO;
 
 /**
  * "Transaction" object class
