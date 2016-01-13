@@ -6,10 +6,12 @@ Java RESTful web services that stores and returns transactions
  2. Maven 3
  3. Spring 1.3.1
  4. Jersey 2.22.1
- 5. Genson 1.3
+ 5. Jackson 2.7.0
 
 Proudly made with IntelliJ IDEA <3
 
 # Documentation
 (todo)
 
+# Curl examples
+ * curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X PUT -d "{\"amount\":1000,\"type\":\"shopping\"}" http://localhost:8080/transactionservice/transaction/5
