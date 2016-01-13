@@ -21,6 +21,7 @@
 
 package model.DAO;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,49 +31,59 @@ import org.junit.Test;
  * @author Valentin Berclaz
  */
 public class TransactionTest {
+	Transaction t1, t2;
 
 	@Before
 	public void setUp() throws Exception {
-
+		t1 = new Transaction(1L, null, 20.0, "grocery");
+		t2 = new Transaction(2L, 1L, 50.0, "grocery");
 	}
 
 	@Test
 	public void testGetId() throws Exception {
-
+		Assert.assertEquals(t1.getId(), 1L);
+		Assert.assertEquals(t2.getId(), 2L);
 	}
 
 	@Test
 	public void testSetId() throws Exception {
-
+		t1.setId(3L);
+		Assert.assertEquals(t1.getId(), 3L);
 	}
 
 	@Test
 	public void testGetParent_id() throws Exception {
-
+		Assert.assertNull(t1.getParent_id());
+		Assert.assertEquals(t2.getParent_id().toString(), 1L + "");
 	}
 
 	@Test
 	public void testSetParent_id() throws Exception {
-
+		t1.setParent_id(3L);
+		Assert.assertNotNull(t1.getParent_id());
 	}
 
 	@Test
 	public void testGetAmount() throws Exception {
-
+		Assert.assertEquals(t1.getAmount(), 20.0, 0.0);
+		Assert.assertEquals(t1.getAmount(), 20.0, 0.0);
 	}
 
 	@Test
 	public void testSetAmount() throws Exception {
-
+		t1.setAmount(100.0);
+		Assert.assertEquals(t1.getAmount(), 100.0, 0.0);
 	}
 
 	@Test
 	public void testGetType() throws Exception {
-
+		Assert.assertEquals(t1.getType(), "grocery");
+		Assert.assertEquals(t2.getType(), "grocery");
 	}
 
 	@Test
 	public void testSetType() throws Exception {
-
+		t1.setType("car");
+		Assert.assertEquals(t1.getType(), "car");
 	}
 }
