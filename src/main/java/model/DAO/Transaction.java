@@ -32,6 +32,9 @@ import java.io.Serializable;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Transaction implements Serializable {
+	// UID
+	private static final long serialVersionUID = 354034056054L;
+
 	// Variables
 	private long id;
 	private Long parent_id;
