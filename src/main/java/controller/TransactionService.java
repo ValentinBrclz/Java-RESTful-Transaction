@@ -39,6 +39,7 @@ import java.util.ArrayList;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TransactionService {
+	// Launching the database
 	private DatabaseInterface db = new MemoryDatabase();
 
 	@GET
@@ -56,15 +57,18 @@ public class TransactionService {
 	@PUT
 	@Path("transaction/{id: [1-9][0-9]*}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String addTransaction(@PathParam("id") long id, Transaction input) {
-		// TODO addTransaction() to implement
+	public Response addTransaction(@PathParam("id") long id, Transaction transaction) {
+		try {
+			// Set the id
+			transaction.setId(id);
 
-		System.out.println(input);
-		System.out.println(input.getAmount());
-		System.out.println(input.getType());
-		System.out.println(input.getParent_id());
+			// Add the transaction to the database
+			db.addTransaction(transaction);
 
-		return "ok";
+			return Response.ok("{\"status\":\"ok\"}").build();
+		} catch (IllegalArgumentException e) {
+			throw new WebApplicationException(e.getMessage(), Response.Status.BAD_REQUEST);
+		}
 	}
 
 	@GET

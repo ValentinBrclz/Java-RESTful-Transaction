@@ -66,7 +66,7 @@ public class MemoryDatabase implements DatabaseInterface {
 	 * @return The transaction with the specified id
 	 */
 	@Override
-	public Transaction getTransaction(long id) {
+	public Transaction getTransaction(Long id) {
 		return db.get(id);
 	}
 

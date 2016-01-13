@@ -37,7 +37,7 @@ public interface DatabaseInterface {
 	 * @param id The id of the transaction
 	 * @return The transaction with the specified id
 	 */
-	Transaction getTransaction(long id);
+	Transaction getTransaction(Long id);
 
 	/**
 	 * Get transactions ids that correspond to a specified type
