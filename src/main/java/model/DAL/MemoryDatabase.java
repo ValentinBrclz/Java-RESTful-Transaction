@@ -97,9 +97,14 @@ public class MemoryDatabase implements DatabaseInterface {
 	 * Add a transaction to the database
 	 *
 	 * @param transaction The transaction to add
+	 * @throws IllegalArgumentException
 	 */
 	@Override
-	public void addTransaction(Transaction transaction) {
+	public void addTransaction(Transaction transaction) throws IllegalArgumentException {
+		// Check that the id does not exist
+		if (db.get(transaction.getId()) != null)
+			throw new IllegalArgumentException("The id already exist in the database");
+
 		// Add the transaction in the main database
 		db.put(transaction.getId(), transaction);
 

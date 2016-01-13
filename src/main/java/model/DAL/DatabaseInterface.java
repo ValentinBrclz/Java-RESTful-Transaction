@@ -60,5 +60,5 @@ public interface DatabaseInterface {
 	 *
 	 * @param transaction The transaction to add
 	 */
-	void addTransaction(Transaction transaction);
+	void addTransaction(Transaction transaction) throws IllegalArgumentException;
 }
