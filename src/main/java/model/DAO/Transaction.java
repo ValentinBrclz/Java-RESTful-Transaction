@@ -78,7 +78,7 @@ public class Transaction implements Serializable {
 	 * @param id The id of the transaction
 	 * @throws IllegalArgumentException
 	 */
-	private void setId(long id) throws IllegalArgumentException {
+	public void setId(long id) throws IllegalArgumentException {
 		if (id > 0)
 			this.id = id;
 		else
