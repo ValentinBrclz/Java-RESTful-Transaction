@@ -21,12 +21,17 @@
 
 package model.DAO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
+
 /**
  * "Transaction" object class
  *
  * @author Valentin Berclaz
  */
-public class Transaction {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Transaction implements Serializable {
 	// Variables
 	private long id;
 	private Long parent_id;
@@ -49,7 +54,11 @@ public class Transaction {
 		setType(type);
 	}
 
-	// Getter and setters
+	/**
+	 * Default constructor
+	 */
+	public Transaction() {
+	}
 
 	/**
 	 * Get the id of the transaction
@@ -78,7 +87,7 @@ public class Transaction {
 	 *
 	 * @return The id of the parent
 	 */
-	public long getParent_id() {
+	public Long getParent_id() {
 		return parent_id;
 	}
 
