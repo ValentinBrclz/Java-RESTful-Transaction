@@ -15,9 +15,9 @@ Proudly made with IntelliJ IDEA <3
 
 # Curl examples
  * Transaction
- ** GET: curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/transactionservice/transaction/1
- ** PUT: curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X PUT -d "{\"amount\":1000,\"type\":\"shopping\"}" http://localhost:8080/transactionservice/transaction/5
+  * GET: curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/transactionservice/transaction/1
+  * PUT: curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X PUT -d "{\"amount\":1000,\"type\":\"shopping\"}" http://localhost:8080/transactionservice/transaction/5
  * Type
- ** ?
+  * ?
  * Sum
- ** ?
+  * ?
