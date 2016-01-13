@@ -101,7 +101,6 @@ public class Transaction implements Serializable {
 	 * @throws IllegalArgumentException
 	 */
 	public void setParent_id(Long parent_id) throws IllegalArgumentException {
-		// TODO check if parent exist
 		if (parent_id == null || parent_id > 0)
 			this.parent_id = parent_id;
 		else
