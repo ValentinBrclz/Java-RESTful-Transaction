@@ -20,4 +20,4 @@ Proudly made with IntelliJ IDEA <3
  * Type
   * GET: curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/transactionservice/types/grocery
  * Sum
-  * ?
+  * GET: curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/transactionservice/sum/1
