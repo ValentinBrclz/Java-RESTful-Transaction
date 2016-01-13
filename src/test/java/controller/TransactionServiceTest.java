@@ -21,6 +21,9 @@
 
 package controller;
 
+import org.junit.Before;
+import org.junit.Test;
+
 /**
  * Test of the class "TransactionService"
  *
@@ -28,27 +31,27 @@ package controller;
  */
 public class TransactionServiceTest {
 
-	@org.junit.Before
+	@Before
 	public void setUp() throws Exception {
 
 	}
 
-	@org.junit.Test
+	@Test
 	public void testGetTransaction() throws Exception {
 
 	}
 
-	@org.junit.Test
+	@Test
 	public void testAddTransaction() throws Exception {
 
 	}
 
-	@org.junit.Test
+	@Test
 	public void testGetTransactionsIdByType() throws Exception {
 
 	}
 
-	@org.junit.Test
+	@Test
 	public void testGetSum() throws Exception {
 
 	}
