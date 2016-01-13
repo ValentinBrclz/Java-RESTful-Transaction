@@ -40,7 +40,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class TransactionService {
 	// Launching the database
-	private DatabaseInterface db = new MemoryDatabase();
+	private DatabaseInterface db = MemoryDatabase.getInstance();
 
 	@GET
 	@Path("transaction/{id: [1-9][0-9]*}")

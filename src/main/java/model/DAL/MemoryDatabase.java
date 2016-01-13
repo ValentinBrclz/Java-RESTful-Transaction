@@ -37,9 +37,9 @@ public class MemoryDatabase implements DatabaseInterface {
 	private ConcurrentHashMap<Long, ArrayList<Long>> parentIndex;
 
 	/**
-	 * Constructor
+	 * Private constructor (singleton)
 	 */
-	public MemoryDatabase() {
+	private MemoryDatabase() {
 		db = new ConcurrentHashMap<Long, Transaction>();
 		typeIndex = new ConcurrentHashMap<String, ArrayList<Long>>();
 		parentIndex = new ConcurrentHashMap<Long, ArrayList<Long>>();
@@ -51,6 +51,25 @@ public class MemoryDatabase implements DatabaseInterface {
 		addTransaction(new Transaction(3L, null, 5.0, "car"));
 		addTransaction(new Transaction(4L, 1L, 5.0, "grocery"));
 		addTransaction(new Transaction(5L, 2L, 5.0, "grocery"));
+	}
+
+	/**
+	 * Holding class for the singleton
+	 */
+	private static class DatabaseHolder {
+		/**
+		 * Instance unique non préinitialisée
+		 */
+		private final static DatabaseInterface instance = new MemoryDatabase();
+	}
+
+	/**
+	 * Get the current database
+	 *
+	 * @return The current instance of the Database
+	 */
+	public static DatabaseInterface getInstance() {
+		return DatabaseHolder.instance;
 	}
 
 	/**
