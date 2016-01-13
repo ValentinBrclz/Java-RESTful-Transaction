@@ -28,7 +28,7 @@ import model.DAO.Transaction;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Transaction controller
@@ -66,20 +66,22 @@ public class TransactionService {
 			db.addTransaction(transaction);
 
 			return Response.ok("{\"status\":\"ok\"}").build();
+
 		} catch (IllegalArgumentException e) {
+
 			throw new WebApplicationException(e.getMessage(), Response.Status.BAD_REQUEST);
 		}
 	}
 
 	@GET
 	@Path("types/{type}")
-	public long[] getTransactionsIdByType(@PathParam("type") String type) {
-		ArrayList<Long> transactionsIds = db.getTransactionsIdsByType(type);
+	public Long[] getTransactionsIdByType(@PathParam("type") String type) {
+		List<Long> transactionsIds = db.getTransactionsIdsByType(type);
 
 		if (transactionsIds == null || transactionsIds.size() == 0) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
-			return new long[]{1L, 2L}; //TODO
+			return transactionsIds.toArray(new Long[transactionsIds.size()]);
 		}
 	}
 
