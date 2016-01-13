@@ -21,7 +21,8 @@
 
 package model.DAL;
 
-import org.junit.Before;
+import model.DAO.Transaction;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -30,15 +31,18 @@ import org.junit.Test;
  * @author Valentin Berclaz
  */
 public class MemoryDatabaseTest {
-
-	@Before
-	public void setUp() throws Exception {
-
-	}
+	DatabaseInterface db = MemoryDatabase.getInstance();
+	Transaction referenceTransaction = new Transaction(1L, null, 20.0, "grocery");
 
 	@Test
-	public void testGetTransaction() throws Exception {
+	public void testAddAndGetTransaction() throws Exception {
+		// Add transaction
+		db.addTransaction(referenceTransaction);
 
+		// Get it
+		Transaction t = db.getTransaction(1L);
+
+		Assert.assertEquals(t, referenceTransaction);
 	}
 
 	@Test
@@ -48,11 +52,6 @@ public class MemoryDatabaseTest {
 
 	@Test
 	public void testGetTransactionChildren() throws Exception {
-
-	}
-
-	@Test
-	public void testAddTransaction() throws Exception {
 
 	}
 }

@@ -43,14 +43,6 @@ public class MemoryDatabase implements DatabaseInterface {
 		db = new ConcurrentHashMap<Long, Transaction>();
 		typeIndex = new ConcurrentHashMap<String, ArrayList<Long>>();
 		parentIndex = new ConcurrentHashMap<Long, ArrayList<Long>>();
-
-		// Some fake test data
-		// TODO move test data to test script
-		addTransaction(new Transaction(1L, null, 20.0, "grocery"));
-		addTransaction(new Transaction(2L, 1L, 30.0, "grocery"));
-		addTransaction(new Transaction(3L, null, 5.0, "car"));
-		addTransaction(new Transaction(4L, 1L, 5.0, "grocery"));
-		addTransaction(new Transaction(5L, 2L, 5.0, "grocery"));
 	}
 
 	/**
