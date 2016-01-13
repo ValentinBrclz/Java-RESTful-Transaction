@@ -48,12 +48,12 @@ public interface DatabaseInterface {
 	ArrayList<Long> getTransactionsIdsByType(String type);
 
 	/**
-	 * Get the sum of the transaction and all its children
+	 * Get the children of the transaction
 	 *
 	 * @param id The id of the parent transaction
-	 * @return The requested sum
+	 * @return The requested children
 	 */
-	Double getSum(long id);
+	ArrayList<Long> getTransactionChildren(Long id);
 
 	/**
 	 * Add a transaction to the database

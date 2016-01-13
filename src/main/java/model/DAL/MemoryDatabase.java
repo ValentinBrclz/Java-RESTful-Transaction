@@ -34,6 +34,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MemoryDatabase implements DatabaseInterface {
 	private ConcurrentHashMap<Long, Transaction> db;
 	private ConcurrentHashMap<String, ArrayList<Long>> typeIndex;
+	private ConcurrentHashMap<Long, ArrayList<Long>> parentIndex;
 
 	/**
 	 * Constructor
@@ -41,22 +42,15 @@ public class MemoryDatabase implements DatabaseInterface {
 	public MemoryDatabase() {
 		db = new ConcurrentHashMap<Long, Transaction>();
 		typeIndex = new ConcurrentHashMap<String, ArrayList<Long>>();
-
+		parentIndex = new ConcurrentHashMap<Long, ArrayList<Long>>();
 
 		// Some fake test data
 		// TODO remove test data
-		db.put(1L, new Transaction(1L, null, 20.0, "grocery"));
-		db.put(2L, new Transaction(2L, null, 30.0, "grocery"));
-		db.put(3L, new Transaction(3L, null, 5.0, "car"));
-		db.put(4L, new Transaction(4L, null, 5.0, "grocery"));
-		ArrayList<Long> tmpGrocery = new ArrayList<Long>();
-		tmpGrocery.add(1L);
-		tmpGrocery.add(2L);
-		tmpGrocery.add(4L);
-		typeIndex.put("grocery", tmpGrocery);
-		ArrayList<Long> tmpCar = new ArrayList<Long>();
-		tmpCar.add(3L);
-		typeIndex.put("car", tmpCar);
+		addTransaction(new Transaction(1L, null, 20.0, "grocery"));
+		addTransaction(new Transaction(2L, 1L, 30.0, "grocery"));
+		addTransaction(new Transaction(3L, null, 5.0, "car"));
+		addTransaction(new Transaction(4L, 1L, 5.0, "grocery"));
+		addTransaction(new Transaction(5L, 2L, 5.0, "grocery"));
 	}
 
 	/**
@@ -82,15 +76,14 @@ public class MemoryDatabase implements DatabaseInterface {
 	}
 
 	/**
-	 * Get the sum of the transaction and all its children
+	 * Get the children of the transaction
 	 *
 	 * @param id The id of the parent transaction
-	 * @return The requested sum
+	 * @return The requested children
 	 */
 	@Override
-	public Double getSum(long id) {
-		// TODO implement function
-		return null;
+	public ArrayList<Long> getTransactionChildren(Long id) {
+		return parentIndex.get(id);
 	}
 
 	/**
@@ -118,6 +111,20 @@ public class MemoryDatabase implements DatabaseInterface {
 			typeList = typeIndex.get(transaction.getType());
 			typeList.add(transaction.getId());
 			typeIndex.replace(transaction.getType(), typeList);
+		}
+
+		// Add the transaction id in the ParentIndex
+		if (transaction.getParent_id() != null) {
+			ArrayList<Long> parentList;
+			if (parentIndex.get(transaction.getParent_id()) == null) {
+				parentList = new ArrayList<Long>();
+				parentList.add(transaction.getId());
+				parentIndex.put(transaction.getParent_id(), parentList);
+			} else {
+				parentList = parentIndex.get(transaction.getParent_id());
+				parentList.add(transaction.getId());
+				parentIndex.replace(transaction.getParent_id(), parentList);
+			}
 		}
 	}
 }

@@ -87,15 +87,34 @@ public class TransactionService {
 
 	@GET
 	@Path("sum/{id: [1-9][0-9]*}")
-	public double getSum(@PathParam("id") long id) {
-		Double sum = db.getSum(id);
-		//TODO getSum()
-
-		if (sum == null) {
+	public String getSum(@PathParam("id") long id) {
+		Transaction baseTransaction = getTransaction(id);
+		if (baseTransaction == null) { // Test if it exists
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
-			return sum;
+			// Get the sum recursively
+			Double sum = getSumRecursively(baseTransaction.getAmount(), baseTransaction.getId());
+
+			return "{ \"sum\", " + sum + " }";
 		}
+	}
+
+	/**
+	 * Get the sum of children recurisvely
+	 *
+	 * @param sum the sum of the parent(s)
+	 * @param id  the id of the actual parent
+	 * @return the sum of all children
+	 */
+	private double getSumRecursively(Double sum, Long id) {
+		List<Long> children = db.getTransactionChildren(id);
+		if (children != null) {
+			for (Long child : children) {
+				sum += getTransaction(child).getAmount();
+				sum = getSumRecursively(sum, child);
+			}
+		}
+		return sum;
 	}
 }
 
