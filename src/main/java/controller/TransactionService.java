@@ -89,6 +89,7 @@ public class TransactionService {
 	@Path("sum/{id: [1-9][0-9]*}")
 	public double getSum(@PathParam("id") long id) {
 		Double sum = db.getSum(id);
+		//TODO getSum()
 
 		if (sum == null) {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
