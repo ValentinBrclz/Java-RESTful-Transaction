@@ -21,6 +21,7 @@
 
 package controller;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,6 +29,8 @@ import org.junit.Test;
  * Test of the class "TransactionService"
  *
  * @author Valentin Berclaz
+ *
+ * TODO Implement tests
  */
 public class TransactionServiceTest {
 
@@ -38,21 +41,21 @@ public class TransactionServiceTest {
 
 	@Test
 	public void testGetTransaction() throws Exception {
-
+		Assert.fail("Not yet implemented");
 	}
 
 	@Test
 	public void testAddTransaction() throws Exception {
-
+		Assert.fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetTransactionsIdByType() throws Exception {
-
+		Assert.fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetSum() throws Exception {
-
+		Assert.fail("Not yet implemented");
 	}
 }
