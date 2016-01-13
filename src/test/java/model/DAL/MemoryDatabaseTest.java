@@ -23,7 +23,10 @@ package model.DAL;
 
 import model.DAO.Transaction;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 /**
  * Test of the class "MemoryDatabase"
@@ -31,15 +34,20 @@ import org.junit.Test;
  * @author Valentin Berclaz
  */
 public class MemoryDatabaseTest {
-	DatabaseInterface db = MemoryDatabase.getInstance();
-	Transaction referenceTransaction = new Transaction(1L, null, 20.0, "grocery");
+	private static DatabaseInterface db = MemoryDatabase.getInstance();
+	private static Transaction referenceTransaction = new Transaction(1L, null, 20.0, "grocery");
+	private static Transaction referenceChildTransaction = new Transaction(2L, 1L, 10.0, "grocery");
 
-	@Test
-	public void testAddAndGetTransaction() throws Exception {
+	@BeforeClass
+	public static void onlyOnce() throws Exception {
 		// Add transaction
 		db.addTransaction(referenceTransaction);
+		db.addTransaction(referenceChildTransaction);
+	}
 
-		// Get it
+	@Test
+	public void testGetTransaction() throws Exception {
+		// Get the transaction
 		Transaction t = db.getTransaction(1L);
 
 		Assert.assertEquals(t, referenceTransaction);
@@ -47,11 +55,15 @@ public class MemoryDatabaseTest {
 
 	@Test
 	public void testGetTransactionsIdsByType() throws Exception {
+		ArrayList<Long> ids = db.getTransactionsIdsByType("grocery");
 
+		Assert.assertEquals(ids.get(0).toString(), referenceTransaction.getId() + "");
 	}
 
 	@Test
 	public void testGetTransactionChildren() throws Exception {
+		ArrayList<Long> children = db.getTransactionChildren(referenceTransaction.getId());
 
+		Assert.assertEquals(children.get(0).toString(), referenceChildTransaction.getId() + "");
 	}
 }
