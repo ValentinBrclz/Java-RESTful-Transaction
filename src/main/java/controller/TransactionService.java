@@ -43,6 +43,12 @@ public class TransactionService {
 	// Launching the database
 	private final DatabaseInterface db = MemoryDatabase.getInstance();
 
+	/**
+	 * Display a specific transaction (GET)
+	 *
+	 * @param id The id of the transaction to display
+	 * @return The requested transaction
+	 */
 	@GET
 	@Path("transaction/{id: [1-9][0-9]*}")
 	public Transaction getTransaction(@PathParam("id") long id) {
@@ -55,6 +61,12 @@ public class TransactionService {
 		}
 	}
 
+	/**
+	 * Add a transaction to the database (PUT)
+	 * @param id The id of the transaction (in path)
+	 * @param transaction The transaction content
+	 * @return JSON with the status
+	 */
 	@PUT
 	@Path("transaction/{id: [1-9][0-9]*}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -73,6 +85,11 @@ public class TransactionService {
 		}
 	}
 
+	/**
+	 * List transactions ids of a specific type
+	 * @param type The type to search for
+	 * @return JSON with a list of transaction ids
+	 */
 	@GET
 	@Path("types/{type}")
 	public Long[] getTransactionsIdByType(@PathParam("type") String type) {
@@ -85,6 +102,11 @@ public class TransactionService {
 		}
 	}
 
+	/**
+	 * Gives the sum of a transaction and its children
+	 * @param id The id of the transaction
+	 * @return JSON object with the sum
+	 */
 	@GET
 	@Path("sum/{id: [1-9][0-9]*}")
 	public Sum getSum(@PathParam("id") long id) {
