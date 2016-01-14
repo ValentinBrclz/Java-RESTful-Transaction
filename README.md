@@ -9,12 +9,8 @@ Java RESTful web services that stores and returns transactions by id or type, or
  4. Jersey 2.22.1
  5. Jackson 2.7.0
 
-# Performance
-In this script, the choice has been made to have a fast reading of information (GET), but a longer writting (PUT).
-
-The local database (in memory) has been optimised for a fast reading using specific indexes (parent_id and type), but that make the writting process 3x slower. To do so, the MemoryDatabase uses three ConcurrentHashmap which performance are similar to an Hashmap and the complexity for searching, reading and insering is ```O(1)``` which is really good.
-
-A specific fonction had to be created to do the sum of the parent and its children. ```getSumRecursively()``` does it recursively and its complexity is ```O(n)```.
+# Documentation
+The complete documentation can be found by browsing the [Javadoc](https://github.com/ValentinBrclz/Java-RESTful-Transaction/tree/master/doc).
 
 # Curl examples
 ## Adding a transaction
