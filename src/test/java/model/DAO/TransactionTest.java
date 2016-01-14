@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author Valentin Berclaz
  */
 public class TransactionTest {
-	Transaction t1, t2;
+	private Transaction t1, t2;
 
 	@Before
 	public void setUp() throws Exception {
