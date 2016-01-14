@@ -24,6 +24,7 @@ package model.DAO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * "Transaction" object class
@@ -141,5 +142,57 @@ public class Transaction implements Serializable {
 	 */
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	/**
+	 * Indicates whether some other object is "equal to" this one.
+	 *
+	 * @param obj the reference object with which to compare.
+	 * @return {@code true} if this object is the same as the obj
+	 * argument; {@code false} otherwise.
+	 * @see #hashCode()
+	 * @see HashMap
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		// Test if the references are equals
+		if (obj == this) {
+			return true;
+		}
+
+		// Verification of the parameter
+		if (obj instanceof Transaction) {
+
+			// Vérification des valeurs des attributs
+			Transaction o = (Transaction) obj;
+
+			return getId() == o.getId() &&
+					getParent_id().equals(o.getParent_id()) &&
+					getAmount() == o.getAmount() &&
+					getType().equals(o.getType());
+		}
+
+		return false;
+	}
+
+	/**
+	 * Returns a hash code value for the object. This method is
+	 * supported for the benefit of hash tables such as those provided by
+	 * {@link HashMap}.
+	 *
+	 * @return a hash code value for this object.
+	 * @see Object#equals(Object)
+	 * @see System#identityHashCode
+	 */
+	@Override
+	public int hashCode() {
+		int result = 0;
+
+		result = 13 * result + Long.valueOf(getId()).hashCode();
+		result = 13 * result + (getParent_id() != null ? getParent_id().hashCode() : 0);
+		result = 13 * result + (getType() != null ? getType().hashCode() : 0);
+		result = 13 * result + Double.valueOf(getAmount()).hashCode();
+
+		return result;
 	}
 }
