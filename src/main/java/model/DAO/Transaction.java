@@ -186,7 +186,7 @@ public class Transaction implements Serializable {
 	 */
 	@Override
 	public int hashCode() {
-		int result = 0;
+		int result = 7;
 
 		result = 13 * result + Long.valueOf(getId()).hashCode();
 		result = 13 * result + (getParent_id() != null ? getParent_id().hashCode() : 0);
