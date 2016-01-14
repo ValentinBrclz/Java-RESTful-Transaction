@@ -75,8 +75,7 @@ public class TransactionServiceTest {
 
 		if (response.getStatus() != 200) {
 			Assert.fail("Failed : HTTP error code : " + response.getStatus());
-		}
-		else {
+		} else {
 			String output = response.getEntity(String.class);
 
 			Assert.assertEquals("{\"status\":\"ok\"}", output);
