@@ -160,11 +160,18 @@ public class Transaction implements Serializable {
 			return true;
 		}
 
-		// Verification of the parameter
+		// Test the
 		if (obj instanceof Transaction) {
 
-			// Vérification des valeurs des attributs
+			// Testing the values
 			Transaction o = (Transaction) obj;
+
+			// If parentId is null
+			if (getParent_id() == null)
+				return getId() == o.getId() &&
+						o.getParent_id() == null &&
+						getAmount() == o.getAmount() &&
+						getType().equals(o.getType());
 
 			return getId() == o.getId() &&
 					getParent_id().equals(o.getParent_id()) &&
