@@ -36,7 +36,7 @@ import org.springframework.context.annotation.Bean;
  * @version 0.0.1
  */
 @EnableAutoConfiguration // Tells Spring to configure automatically
-class App {
+public class App {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(App.class).run(args);
 	}
