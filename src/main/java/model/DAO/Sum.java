@@ -39,9 +39,19 @@ public class Sum implements Serializable {
 	private double sum;
 
 	/**
-	 * Default constructor
+	 * Default constructor for Jackson
 	 */
 	public Sum() {
+		this(0.0);
+	}
+
+	/**
+	 * Default constructor
+	 *
+	 * @param sum the initial sum
+	 */
+	public Sum(double sum) {
+		setSum(sum);
 	}
 
 	/**

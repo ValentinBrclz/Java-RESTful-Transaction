@@ -59,9 +59,10 @@ public class Transaction implements Serializable {
 	}
 
 	/**
-	 * Default constructor
+	 * Default constructor for Jackson
 	 */
 	public Transaction() {
+
 	}
 
 	/**

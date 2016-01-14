@@ -136,8 +136,6 @@ public class TransactionServiceTest {
 		} else {
 			double sum = response.getEntity(Sum.class).getSum();
 
-			System.out.println(sum);
-
 			Assert.assertEquals(sum,
 					testTransaction1.getAmount() + testTransaction2.getAmount(),
 					0.0);

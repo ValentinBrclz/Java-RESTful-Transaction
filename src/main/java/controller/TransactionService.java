@@ -23,6 +23,7 @@ package controller;
 
 import model.DAL.DatabaseInterface;
 import model.DAL.MemoryDatabase;
+import model.DAO.Sum;
 import model.DAO.Transaction;
 
 import javax.ws.rs.*;
@@ -87,7 +88,7 @@ public class TransactionService {
 
 	@GET
 	@Path("sum/{id: [1-9][0-9]*}")
-	public String getSum(@PathParam("id") long id) {
+	public Sum getSum(@PathParam("id") long id) {
 		Transaction baseTransaction = getTransaction(id);
 		if (baseTransaction == null) { // Test if it exists
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
@@ -95,7 +96,7 @@ public class TransactionService {
 			// Get the sum recursively
 			Double sum = getSumRecursively(baseTransaction.getAmount(), baseTransaction.getId());
 
-			return "{ \"sum\": " + sum + " }";
+			return new Sum(sum);
 		}
 	}
 
