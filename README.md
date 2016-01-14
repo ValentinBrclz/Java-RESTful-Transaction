@@ -47,3 +47,7 @@ curl -i
      -X GET
      http://localhost:8080/transactionservice/sum/1
 ```
+
+## License and credits
+* License: GNU General Public Licence (2.0)
+* Author: [Valentin Berclaz](http://www.valentinbeclaz.com/)
