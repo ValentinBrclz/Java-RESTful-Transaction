@@ -19,10 +19,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-/**
- * Created by Valentin on 12/01/2016.
- */
-
 import config.JerseyInit;
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.glassfish.jersey.servlet.ServletProperties;
@@ -40,7 +36,7 @@ import org.springframework.context.annotation.Bean;
  * @version 0.0.1
  */
 @EnableAutoConfiguration // Tells Spring to configure automatically
-public class App {
+class App {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(App.class).run(args);
 	}

@@ -52,7 +52,7 @@ public class TransactionServiceTest {
 
 	// Variables
 	private Client client;
-	private Transaction[] referenceTransaction = {
+	private final Transaction[] referenceTransaction = {
 			new Transaction(1L, null, 20.0, "grocery"),
 			new Transaction(2L, 1L, 50.0, "grocery")
 	};

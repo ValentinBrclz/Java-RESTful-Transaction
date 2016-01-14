@@ -25,10 +25,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 /**
  * Initialize Jersey and register the Jax-RS application components
- * Parts of this class are inspired by a script from Jasenko Hadziomeragic
  *
  * @author Valentin Berclaz
- * @author Jasenko Hadziomeragic
  */
 public class JerseyInit extends ResourceConfig {
 	public JerseyInit() {

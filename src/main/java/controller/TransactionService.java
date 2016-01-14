@@ -41,7 +41,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class TransactionService {
 	// Launching the database
-	private DatabaseInterface db = MemoryDatabase.getInstance();
+	private final DatabaseInterface db = MemoryDatabase.getInstance();
 
 	@GET
 	@Path("transaction/{id: [1-9][0-9]*}")
@@ -69,7 +69,6 @@ public class TransactionService {
 			return Response.ok("{\"status\":\"ok\"}").build();
 
 		} catch (IllegalArgumentException e) {
-
 			throw new WebApplicationException(e.getMessage(), Response.Status.BAD_REQUEST);
 		}
 	}

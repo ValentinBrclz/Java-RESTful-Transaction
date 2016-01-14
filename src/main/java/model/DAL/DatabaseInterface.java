@@ -26,7 +26,7 @@ import model.DAO.Transaction;
 import java.util.ArrayList;
 
 /**
- * Interface that defines the function to implement by any database
+ * Interface that defines functions that any database needs to implement
  *
  * @author Valentin Berclaz
  */

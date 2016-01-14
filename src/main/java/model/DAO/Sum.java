@@ -35,7 +35,7 @@ public class Sum implements Serializable {
 	// UID
 	private static final long serialVersionUID = 670421290672L;
 
-	// Variables
+	// Variable
 	private double sum;
 
 	/**

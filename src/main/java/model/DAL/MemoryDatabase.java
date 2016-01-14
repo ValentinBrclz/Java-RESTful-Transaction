@@ -32,9 +32,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Valentin Berclaz
  */
 public class MemoryDatabase implements DatabaseInterface {
-	private ConcurrentHashMap<Long, Transaction> db;
-	private ConcurrentHashMap<String, ArrayList<Long>> typeIndex;
-	private ConcurrentHashMap<Long, ArrayList<Long>> parentIndex;
+	private final ConcurrentHashMap<Long, Transaction> db;
+	private final ConcurrentHashMap<String, ArrayList<Long>> typeIndex;
+	private final ConcurrentHashMap<Long, ArrayList<Long>> parentIndex;
 
 	/**
 	 * Private constructor (singleton)
