@@ -71,4 +71,14 @@ public class Sum implements Serializable {
 	public void setSum(double sum) {
 		this.sum = sum;
 	}
+
+	/**
+	 * Return the object as a string
+	 *
+	 * @return string representing the object
+	 */
+	@Override
+	public String toString() {
+		return sum + "";
+	}
 }

@@ -203,4 +203,19 @@ public class Transaction implements Serializable {
 
 		return result;
 	}
+
+	/**
+	 * Return the object as a string
+	 *
+	 * @return string representing the object
+	 */
+	@Override
+	public String toString() {
+		return "Transaction{" +
+				"id=" + id +
+				", parent_id=" + parent_id +
+				", amount=" + amount +
+				", type='" + type + '\'' +
+				'}';
+	}
 }
