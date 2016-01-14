@@ -101,7 +101,7 @@ public class MemoryDatabase implements DatabaseInterface {
 	 * Add a transaction to the database
 	 *
 	 * @param transaction The transaction to add
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if the id is already present in the database
 	 */
 	@Override
 	public void addTransaction(Transaction transaction) throws IllegalArgumentException {

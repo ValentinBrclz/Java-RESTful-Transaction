@@ -59,6 +59,7 @@ public interface DatabaseInterface {
 	 * Add a transaction to the database
 	 *
 	 * @param transaction The transaction to add
+	 * @throws IllegalArgumentException if the id is already present in the database
 	 */
 	void addTransaction(Transaction transaction) throws IllegalArgumentException;
 }

@@ -49,7 +49,7 @@ public class Transaction implements Serializable {
 	 * @param parent_id The id of the parent of the transaction
 	 * @param amount    The amount of the transaction
 	 * @param type      The type of the transaction
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if one of the ids (id, parent_id) is 0 or less
 	 */
 	public Transaction(long id, Long parent_id, double amount, String type) throws IllegalArgumentException {
 		setId(id);
@@ -78,7 +78,7 @@ public class Transaction implements Serializable {
 	 * Set the id of the transaction
 	 *
 	 * @param id The id of the transaction
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if the id is 0 or less
 	 */
 	public void setId(long id) throws IllegalArgumentException {
 		if (id > 0)
@@ -100,7 +100,7 @@ public class Transaction implements Serializable {
 	 * Set the parent id of the transaction
 	 *
 	 * @param parent_id The id of the parent
-	 * @throws IllegalArgumentException
+	 * @throws IllegalArgumentException if the id is 0 or less
 	 */
 	public void setParent_id(Long parent_id) throws IllegalArgumentException {
 		if (parent_id == null || parent_id > 0)
