@@ -95,7 +95,7 @@ public class TransactionService {
 			// Get the sum recursively
 			Double sum = getSumRecursively(baseTransaction.getAmount(), baseTransaction.getId());
 
-			return "{ \"sum\", " + sum + " }";
+			return "{ \"sum\": " + sum + " }";
 		}
 	}
 
