@@ -39,9 +39,8 @@ import java.util.List;
  * Test of the class "TransactionService"
  *
  * @author Valentin Berclaz
- *
- * TODO Implement tests
  */
+// Make sure the add() test is done before anyhting else
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TransactionServiceTest {
 	// Configuration
@@ -53,91 +52,105 @@ public class TransactionServiceTest {
 
 	// Variables
 	private Client client;
-	private Transaction testTransaction1 = new Transaction(1L, null, 20.0, "grocery");
-	private Transaction testTransaction2 = new Transaction(2L, null, 50.0, "grocery");
+	private Transaction[] referenceTransaction = {
+			new Transaction(1L, null, 20.0, "grocery"),
+			new Transaction(2L, 1L, 50.0, "grocery")
+	};
 
 	@Before
 	public void setUp() throws Exception {
+		// (Re)Initialise 'client'
 		client = Client.create();
 	}
 
-	// TODO testAddTransaction()
-	/*@Test
+	@Test
 	public void testAddTransaction() throws Exception {
 		WebResource webResource = client
-				.resource(URL+PATH+TRANSACTION_PATH+"/1");
+				.resource(URL + PATH + TRANSACTION_PATH + "/" + referenceTransaction[0].getId());
 
-		ClientResponse response = webResource.accept("application/json")
-				.get(ClientResponse.class);
+		ClientResponse response = webResource
+				.accept("application/json")
+				.type("application/json")
+				.put(ClientResponse.class, referenceTransaction[0]);
 
 		if (response.getStatus() != 200) {
-			Assert.fail("Failed : HTTP error code : "
-					+ response.getStatus());
+			Assert.fail("Failed : HTTP error code : " + response.getStatus());
 		}
 		else {
 			String output = response.getEntity(String.class);
 
-			System.out.println("Output from Server .... \n");
-			System.out.println(output);
-
-			Assert.fail("Not yet implemented");
+			Assert.assertEquals("{\"status\":\"ok\"}", output);
 		}
-	}*/
+
+		webResource = client
+				.resource(URL + PATH + TRANSACTION_PATH + "/" + referenceTransaction[1].getId());
+
+		response = webResource
+				.accept("application/json")
+				.type("application/json")
+				.put(ClientResponse.class, referenceTransaction[1]);
+
+		if (response.getStatus() != 200) {
+			Assert.fail("Failed : HTTP error code : " + response.getStatus());
+		} else {
+			String output = response.getEntity(String.class);
+
+			Assert.assertEquals("{\"status\":\"ok\"}", output);
+		}
+	}
 
 	@Test
 	public void testGetTransaction() throws Exception {
 		WebResource webResource = client
-				.resource(URL + PATH + TRANSACTION_PATH + "/" + testTransaction1.getId());
+				.resource(URL + PATH + TRANSACTION_PATH + "/" + referenceTransaction[0].getId());
 
 		ClientResponse response = webResource.accept("application/json")
 				.get(ClientResponse.class);
 
 		if (response.getStatus() != 200) {
-			Assert.fail("Failed : HTTP error code : "
-					+ response.getStatus());
+			Assert.fail("Failed : HTTP error code : " + response.getStatus());
 		} else {
 			Transaction returnedTransaction = response.getEntity(Transaction.class);
 
-			Assert.assertEquals(returnedTransaction, testTransaction1);
+			Assert.assertEquals(referenceTransaction[0], returnedTransaction);
 		}
 	}
 
 	@Test
 	public void testGetTransactionsIdByType() throws Exception {
 		WebResource webResource = client
-				.resource(URL + PATH + TYPE_PATH + "/" + testTransaction1.getType());
+				.resource(URL + PATH + TYPE_PATH + "/" + referenceTransaction[0].getType());
 
 		ClientResponse response = webResource.accept("application/json")
 				.get(ClientResponse.class);
 
 		if (response.getStatus() != 200) {
-			Assert.fail("Failed : HTTP error code : "
-					+ response.getStatus());
+			Assert.fail("Failed : HTTP error code : " + response.getStatus());
 		} else {
 			//noinspection EmptyClass
 			List<Long> arrayList = response.getEntity(new GenericType<List<Long>>() {
 			});
 
-			Assert.assertEquals(arrayList.get(0).toString(), testTransaction1.getId() + "");
+			Assert.assertEquals(referenceTransaction[0].getId() + "", arrayList.get(0).toString());
 		}
 	}
 
 	@Test
 	public void testGetSum() throws Exception {
 		WebResource webResource = client
-				.resource(URL + PATH + SUM_PATH + "/" + testTransaction1.getId());
+				.resource(URL + PATH + SUM_PATH + "/" + referenceTransaction[0].getId());
 
 		ClientResponse response = webResource.accept("application/json")
 				.get(ClientResponse.class);
 
 		if (response.getStatus() != 200) {
-			Assert.fail("Failed : HTTP error code : "
-					+ response.getStatus());
+			Assert.fail("Failed : HTTP error code : " + response.getStatus());
 		} else {
 			double sum = response.getEntity(Sum.class).getSum();
 
-			Assert.assertEquals(sum,
-					testTransaction1.getAmount() + testTransaction2.getAmount(),
+			Assert.assertEquals(
+					referenceTransaction[0].getAmount() + referenceTransaction[1].getAmount(),
+					sum,
 					0.0);
 		}
 	}
